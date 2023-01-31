@@ -66,3 +66,18 @@ sup {
 .error {
     color: tomato;
 }
+
+.circle {
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0 .5rem;
+    border: 1px solid #AAA;
+    border-radius: 50%;
+    font-size: 1rem;
+    color: #AAA;
+    text-align: center;
+    vertical-align: middle;
+    cursor: help;
+    position: relative;
+}

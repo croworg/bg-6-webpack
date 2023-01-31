@@ -1,11 +1,22 @@
 import { formatError } from './utils.js';
-// import { Howl } from './howler.js';
+// import { Howl } from './howler.js'; // выдает ошибку при импорте модулем
 import './howler.js';
 
 const timerForm = document.getElementById('timer_form');
 const timerError = document.getElementById('timer__error');
 const timerInputs = timerForm.querySelectorAll('input');
 const timerButton = document.getElementById('timerButton');
+const hintEl = document.getElementById('timer_hint');
+
+const timerHint = () => {
+    const hint = document.createElement('div');
+    hint.textContent = 'Для сброса таймера нажмите Esc';
+    hintEl.after(hint);
+    hintEl.addEventListener('mouseover', () => {
+        hint.classList.remove('hint');
+    })
+
+};
 
 const duration = { // default values for timer
     hours: 0,
@@ -87,7 +98,6 @@ timerForm.onwheel = e => {
 
     if (e.target.getAttribute('disabled') !== null || unit === undefined) return;
 
-    // console.log('e.target.name', e.target.name, e.wheelDeltaY);
     if (e.wheelDeltaY) {
         if (Math.abs(e.wheelDeltaY) === 120) {
             value = e.deltaY * -0.01;
@@ -111,10 +121,14 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-window.onload = () => {
+function runTimer() {
+    console.log('loaded');
     for (const input of timerInputs) {
         input.value = duration[input.id];
         input.removeAttribute('disabled');
     };
     timerButton.removeAttribute('disabled');
 };
+
+runTimer();
+timerHint();

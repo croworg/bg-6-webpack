@@ -1,29 +1,28 @@
-// import { loadScript } from './load.js';
+'use strict';
 import { loadScript } from "./load.js";
 
-const tabs = document.getElementById('tabs');
-const buttons = document.getElementById('buttons');
-const choise = document.getElementById('choise');
+const welcomeElem = document.getElementById('welcome');
+const buttonsForm = document.getElementById('buttons');
+const tabsElem = document.getElementById('tabs');
 
 const modules = [
-    {id: timer, src: './js/timer.js', module: true},
-    {id: datecalc, src: './js/main.js', module: true}
+    { id: 'timer', src: './js/timer.js', module: true },
+    { id: 'dateCalc', src: './js/main.js', module: true }
 ];
 
-buttons.addEventListener('click', event => {
+buttonsForm.addEventListener('click', event => {
     if (!event.target.name) return;
-    choise.classList.add('hide');
+    welcomeElem.classList.add('hide');
 
-    for (const child of tabs.children) {
+    for (const child of tabsElem.children) {
         if (child.id === event.target.name) {
             child.classList.remove('hide');
-            // loadScript()
-            loadScript(modules[child.id], child.id, true);
-            const scriptsTest = [...document.scripts];
-            scriptsTest.find(e => console.log(e.id))
-            for (const script of document.scripts) {
-                console.log(script);
-            }
+
+            if ([...document.scripts].find(({ id }) => id === child.id)) continue; // skip if already loaded
+
+            const module = modules.find(e => e.id === child.id);
+            loadScript(module);
+
         } else {
             child.classList.add('hide');
         }

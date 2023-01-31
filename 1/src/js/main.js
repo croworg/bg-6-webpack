@@ -1,4 +1,3 @@
-import { loadScript } from './load.js';
 import { formatError } from './utils.js';
 import { diffDates, diffToHtml } from './datecalc.js';
 
