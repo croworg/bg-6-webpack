@@ -8,16 +8,6 @@ const timerInputs = timerForm.querySelectorAll('input');
 const timerButton = document.getElementById('timerButton');
 const hintEl = document.getElementById('timer_hint');
 
-const timerHint = () => {
-    const hint = document.createElement('div');
-    hint.textContent = 'Для сброса таймера нажмите Esc';
-    hintEl.after(hint);
-    hintEl.addEventListener('mouseover', () => {
-        hint.classList.remove('hint');
-    })
-
-};
-
 const duration = { // default values for timer
     hours: 0,
     minutes: 5,
@@ -128,6 +118,16 @@ function runTimer() {
         input.removeAttribute('disabled');
     };
     timerButton.removeAttribute('disabled');
+};
+
+const timerHint = () => {
+    const hint = document.createElement('div');
+    hint.classList.add('timer_hint');
+    hint.classList.add('hide');
+    hint.textContent = 'Для сброса таймера нажмите Esc';
+    hintEl.after(hint);
+    hintEl.addEventListener('mouseover', () => { hint.classList.remove('hide') });
+    hintEl.addEventListener('mouseout', () => { hint.classList.add('hide') });
 };
 
 runTimer();
