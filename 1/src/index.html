@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор дат</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- <script src="./js/timer.js" type="module"></script> -->
+    <!-- <script src="./js/main.js" type="module"></script> -->
+    <!-- <script src="./js/select.js" defer></script> -->
+    <script src="./js/select.js" type="module"></script>
+</head>
+
+<body>
+    <header id="buttons" class="menu">
+        <button name="timer">Таймер</button>
+        <button name="dateCalc">Калькулятор дат</button>
+        <!-- <button name="something">Что-то еще</button> -->
+    </header>
+    <div class="tabs-wrapper">
+        <span id="welcome">Выберите тулзу ⇧</span>
+        <div id="tabs" class="tabs">
+            <div id="timer" class="timer hide">
+                <header class="header">Таймер <sup>βeta</sup><span id="timer_hint" class="circle">?</span></header>
+                <form id="timer_form" class="border" action="">
+                    <label for="">
+                        <strong>Часы</strong>
+                        <input type="number" name="hours" id="hours" min="0" max="23" disabled>
+                    </label>
+                    <label for="">
+                        <strong>Минуты</strong>
+                        <input type="number" name="minutes" id="minutes" min="0" max="59" disabled>
+                    </label>
+                    <label for="">
+                        <strong>Секунды</strong>
+                        <input type="number" name="seconds" id="seconds" min="0" max="59" disabled>
+                    </label>
+                    <button id="timerButton" type="submit" disabled>Старт</button>
+                </form>
+                <p id="timer__error" class="error"></p>
+            </div>
+            <div id="dateCalc" class="dateCalc hide">
+                <header class="header">Калькулятор дат</header>
+                <form id="datecalc_form" class="border" action="">
+                    <label for="">
+                        <strong>Первая дата:</strong>
+                        <input type="date" name="firstDate" />
+                    </label>
+                    <label for="">
+                        <strong>Вторая дата:</strong>
+                        <input type="date" name="secondDate" />
+                    </label>
+                    <button type="submit">Расчитать промежуток</button>
+                </form>
+                <p id="datecalc__result" class="error"></p>
+            </div>
+            <!-- <div id="something" class="something hide">
+                <header class="header">Что-то еще</header>
+            </div> -->
+        </div>
+    </div>
+</body>
+
+</html>
