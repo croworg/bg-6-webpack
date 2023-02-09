@@ -1,5 +1,6 @@
 'use strict';
 import { loadScript } from "./load.js";
+import '../css/style.css';
 
 const welcomeElem = document.getElementById('welcome');
 const buttonsForm = document.getElementById('buttons');
